@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+	  <meta charset="utf-8">
+	  <title>Angular</title>
+	  <script src="temperaturaController.js"></script>
+	</head>
+
+	<body>
+	  <div  ng-controller="temperaturaController as temper">
+	    
+	    <div>
+	      <b>Temperatura:</b>
+	      <br>
+	      <input type="number" ng-model="temper.temp" min="{{temper.temperaturas[temper.escala]}}" required>
+	      <br>
+	      <select ng-model="temper.escala">
+	        <option ng-repeat="t in temper.escalas">{{t}}</option>
+	      </select>
+	    </div>
+	    <div>
+	      <b>Converssões:</b>
+	      <p ng-repeat="t in temper.escalas"> 
+	      	{{t}} : {{temper.convert(t)}}
+	      </p>
+	      <button class="btn" ng-click="invoice.pay()">Pay</button>
+	    </div>
+	  </div>
+	</body>
+</html>
