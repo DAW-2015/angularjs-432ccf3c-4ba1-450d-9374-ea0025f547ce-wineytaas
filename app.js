@@ -20,7 +20,16 @@ app.controller('TemperaturaController', function() {
       return  answer;
     }
   };
+});
 
 
+app.controller('impostoController', function() {
 
+  this.salario = 2000;
+
+  this.calImposto = function(salario) {
+    if (salario < 2000) { return salario*0.1};
+    if (2000 <= salario && salario <= 35000 ) { return salario*0.2};
+    if (salario > 3500 ) { return salario*0.3};
+  };
 });
