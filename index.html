@@ -22,5 +22,63 @@
       Salário: <input type="number" ng-model="impCtrl.salario"> <br>
       Inposto: {{impCtrl.calImposto(impCtrl.salario) | number:2}} <br>
     </div>
+
+    <div ng-controller="reviewController as rvCtrl">
+
+      <h2>Review</h2>
+
+      <textarea rows="4" cols="50" ng-model="rvCtrl.texto"></textarea> <br>
+      <input type="range" ng-model="rvCtrl.estrelas" min="0" max="5">
+      <a> {{ rvCtrl.estrelas }} </a>
+      <input type="button" value="Cadastrar" ng-click="rvCtrl.addvetor(rvCtrl.texto,rvCtrl.estrelas)" min="0" max="5">
+
+      <p> Descrição: {{ rvCtrl.texto }}    </p>
+      <p> Estrela(s): {{ rvCtrl.estrelas }}</p>
+
+      <table border="1">
+        <tr>
+          <td> Comentario </td>
+          <td> Estrelas   </td>
+        </tr>
+        <tr ng-repeat="v in rvCtrl.vetor">
+          <td> {{v.comentario}} </td>
+          <td> {{v.estrelas}} </td>
+        </tr>
+      </table>
+      
+    </div>
+
+    <div ng-controller="contactController as conCtrl">
+
+      <h2> Contato </h2>
+
+      <label>NOME: </label><input type="text" ng-model="conCtrl.nome"><br>
+      <label>Telefone: </label><input type="text" ng-model="conCtrl.telefone"><br>
+      <label>e-mail: </label><input type="email" ng-model="conCtrl.email"><br>
+      
+      <input type="button" value="Cadastrar" ng-click="conCtrl.add()">
+
+      <p> Nome:     {{ conCtrl.nome }}     </p>
+      <p> Telefone: {{ conCtrl.telefone }} </p>
+      <p> E-mail:   {{ conCtrl.email }} </p>
+
+      <table border="1">
+        <tr>
+          <td> Index       </td>
+          <td> Nome       </td>
+          <td> Telefone   </td>
+          <td> E-mail     </td>
+        </tr>
+        <tr ng-repeat="v in conCtrl.vetor ">
+          <td> {{$index}} </td>
+          <td> {{v.nome}} </td>
+          <td> {{v.telefone}} </td>
+          <td> {{v.email}} </td>
+          <td> <input type="button" ng-click="contCtrl.remove({{$index}})" value="Remover"></td>
+          <td> <input type="button" ng-click="contCtrl.editar({{$index}})" value="Editar"></td>
+        </tr>
+      </table>
+      
+    </div>
   </body>
 </html>
